@@ -1,0 +1,191 @@
+paths:
+    # LINK ./order.controller.ts#getAllOrders
+    # ANCHOR[id=getAllOrder]
+    /orders:
+        get:
+            tags:
+                - Orders
+            summary: To query all orders
+            description: The endpoint will ask orders will return with all the data of the table
+            responses:
+                "200":
+                    description: OK.
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/Order"
+                    headers:
+                        x-total-count:
+                            description: The number of orders
+                            schema:
+                                type: integer
+                                example: 16334
+                "4XX":
+                    description: Fault
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+
+        # LINK ./order.controller.ts#createOrder
+        # ANCHOR[id=createOrder]
+        post:
+            tags:
+                - Orders
+            summary: To create a new order
+            description: Create a new order according to Request Body content
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Order"
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Order"
+                    headers:
+                        x-total-count:
+                            description: The number of orders
+                            schema:
+                                type: number
+                                example: 5126
+                "4XX":
+                    description: Fault
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+
+    # LINK ./order.controller.ts#getOrderById
+    # ANCHOR[id=getOrderById]
+    /orders/{id}:
+        get:
+            tags:
+                - Orders
+            summary: To query an order
+            description: Order query based on primary key (ID)
+            parameters:
+                - name: id
+                  in: path
+                  description: The Objectid ID of the Order
+                  schema:
+                      type: string
+                      example: "eeee00000000000000000001"
+                  required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Order"
+                "4XX":
+                    description: Fault
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+
+        # LINK ./order.controller.ts#modifyOrder
+        # ANCHOR[id=modifyOrder]
+        patch:
+            tags:
+                - Orders
+            summary: To change an order
+            description: Modify the order designated with primary key (ID)
+            parameters:
+                - name: id
+                  in: path
+                  description: The Objectid ID of the Order
+                  schema:
+                      type: string
+                      example: "eeee00000000000000000002"
+                  required: true
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Order"
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Order"
+                "4XX":
+                    description: Fault
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+
+        # LINK ./order.controller.ts#deleteOrder
+        # ANCHOR[id=deleteOrder]
+        delete:
+            tags:
+                - Orders
+            summary: To delete an order
+            description: Delete an order designated with primary key (ID).<br>
+            parameters:
+                - name: id
+                  in: path
+                  description: Objectid ID of the order to be deleted
+                  schema:
+                      type: string
+                      example: "eeee00000000000000000001"
+                  required: true
+            responses:
+                "200":
+                    description: OK
+                    headers:
+                        x-total-count:
+                            description: Number of orders after deleting
+                            schema:
+                                type: number
+                                example: 231
+                "4XX":
+                    description: Fault
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+
+    # LINK ./order.controller.ts#deleteFromDetails
+    # ANCHOR[id=deleteFromDetails]
+    /orders/{id}/{detail_id}:
+        delete:
+            tags:
+                - Orders
+            summary: Deleting an order detail from Details vector
+            description: Delete the details of the order designated with the primary key (ID).
+            parameters:
+                - name: id
+                  in: path
+                  description: The order ID
+                  schema:
+                      type: string
+                      example: "eeee00000000000000000001"
+                  required: true
+                - name: detail_id
+                  in: path
+                  description: Object ID to be deleted from Details vector
+                  schema:
+                      type: string
+                      example: "ee0000000000000000000001"
+                  required: true
+            responses:
+                "200":
+                    description: OK
+                "4XX":
+                    description: Fault
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+

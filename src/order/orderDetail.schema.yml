@@ -1,0 +1,21 @@
+# LINK ./orderDetail.schema.ts
+components:
+  schemas:
+    OrderDetail:
+      type: object
+      required: [offer_id, product_id, quantity]
+      properties:
+        _id:
+          type: string
+          pattern: '^[0-9a-fA-F]{24}$'
+          description: "The order of the order item - PK"
+          example: "ee0000000000000000000001"
+        offer_id:
+          type: string
+          pattern: '^[0-9a-fA-F]{24}$'
+          description: "Offer for an order ID - FK"
+          example: "bbbb00000000000000000001"
+        quantity:
+          type: number
+          description: "The quantity of product ordered"
+          example: 2.5

@@ -1,0 +1,47 @@
+# LINK ./offer.model.ts
+components:
+    schemas:
+        Offer:
+            type: object
+            properties:
+                _id:
+                    type: string
+                    description: "The ID of the offer (PK) - ObjectId"
+                    example: "bbbb00000000000000000999"
+                offer_start:
+                    type: date
+                    description: "Date of offer, cannot be modified"
+                    example: "2024-05-18"
+                offer_end:
+                    type: date | null
+                    description: "Expiration date of offer, null if the offer is active"
+                    example: null
+                unit:
+                    type: string
+                    description: "Bid unit (eg kg, db, l, etc.), cannot be modified"
+                    example: "kg"
+                unit_price:
+                    type: number
+                    description: "For the unit unit in forint, entire value, cannot be modified"
+                    example: 1500
+                quantity:
+                    type: number
+                    description: "Quantity of offer, can be modified"
+                    example: 10
+                product_id:
+                    type: string
+                    description: "Product ID (FK) - Objectid, cannot be modified"
+                    example: "dddd00000000000000000001"
+                user_id:
+                    type: string
+                    description: "The offering ID (FK) - Objectid, cannot be modified"
+                    example: "aaaa00000000000000000001"
+                picture_url:
+                    type: string
+                    description: "URL address of the offering image, optional"
+                    example: "https://i.imgur.com/WDldL38.jpg"
+                info:
+                    type: string
+                    description: "Other information on offer"
+                    example: "fóliasátras termelesztés"
+

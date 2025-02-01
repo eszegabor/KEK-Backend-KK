@@ -1,0 +1,19 @@
+# LINK ./category.model.ts
+components:
+    schemas:
+        Category:
+            type: object
+            properties:
+                _id:
+                    type: string
+                    description: "Category ID - Primary Key (ObjectId)"
+                    example: "cccc00000000000000000001"
+                main_category:
+                    type: string
+                    description: "The category of the category (main) category (ObjectId)"
+                    example: "fruit"
+                category_name:
+                    type: string
+                    description: "The name of the category"
+                    example: "barack"
+        

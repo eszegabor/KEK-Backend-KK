@@ -1,0 +1,26 @@
+# LINK ./product.model.ts
+components:
+    schemas:
+        Product:
+            type: object
+            properties:
+                _id:
+                    type: string
+                    description: "Product ID - Primary Key (ObjectId)"
+                    example: "dddd00000000000000000000"
+                product_name:
+                    type: string
+                    description: "The name of the product"
+                    example: "jonatán alma"
+                picture_url:
+                    type: string
+                    description: "URL address of the product image of the product"
+                    example: "https://i.imgur.com/jiGsYNz.jpg"
+                category_id:
+                    type: string
+                    pattern: "^[0-9a-fA-F]{24}$"
+                    description: "Category belonging to the product ID - FK"
+                    example: "cccc00000000000000000008"
+                category:
+                    $ref: "#/components/schemas/Category"
+                

@@ -1,0 +1,117 @@
+[
+    {
+        "_id": {
+            "$oid": "aaaa00000000000000000004"
+        },
+        "email": "esze.gabor@students.jedlik.eu",
+        "email_verified": true,
+        "auto_login": true,
+        "name": "Esze Gábor",
+        "password": "$2b$10$Nkwn9WPdaPAnQNRr7/9hz.C1MnQB/1laNDb5SnHOGnFOeyGxNoDdy",
+        "roles": [
+            "user",
+            "admin",
+            "sp"
+        ],
+        "mobile_number": "+36204841961",
+        "picture": "EG"
+    },
+    {
+        "_id": {
+            "$oid": "aaaa00000000000000000006"
+        },
+        "email": "horvat.gabor@students.jedlik.eu",
+        "email_verified": true,
+        "auto_login": true,
+        "name": "Horvát Gábor",
+        "password": "$2b$10$WeX5FSIfYtRmECRnO6KoPuTTDRLRkvBr9S6rgeM9WM6WpJvHWiFyq",
+        "roles": [
+            "user",
+            "admin",
+            "sp"
+        ],
+        "mobile_number": "+36309876543",
+        "picture": "HG"
+    },
+    {
+        "_id": {
+            "$oid": "aaaa00000000000000000005"
+        },
+        "email": "tompos.richard@students.jedlik.eu",
+        "email_verified": true,
+        "auto_login": true,
+        "name": "Tompos Richárd",
+        "password": "$2b$10$JUygvHBmTHNiYpJ/AftHyuyZK7fGUGImghlD3DLOUcuQjelDl.4EK",
+        "roles": [
+            "user",
+            "admin",
+            "sp"
+        ],
+        "mobile_number": "+36201234567",
+        "picture": "TR"
+    },
+    {
+        "_id": {
+            "$oid": "aaaa00000000000000000007"
+        },
+        "email": "nits.laszlo@jedlik.eu",
+        "email_verified": true,
+        "auto_login": true,
+        "name": "Nits László",
+        "password": "stored @ Google007",
+        "roles": [
+            "user",
+            "admin",
+            "sp"
+        ],
+        "mobile_number": "+36201234567",
+        "picture": "https://lh3.googleusercontent.com/a/ACg8ocJwSxT1g5JJ3jL5p7igxIisQEasmQjkxtPAhCAADaCgXlMn0cs=s96-c"
+    },
+    {
+        "_id": {
+            "$oid": "aaaa00000000000000000003"
+        },
+        "email": "user@jedlik.eu",
+        "email_verified": true,
+        "auto_login": true,
+        "name": "user",
+        "password": "$2a$10$o7b7aX04eflUqhqGVyluP.O.k6b7I5nob52F8dT333c7ZJpZDEXeO",
+        "roles": [
+            "user"
+        ],
+        "mobile_number": "+36701234567",
+        "picture": "https://i.imgur.com/cVZTdIT.jpg"
+    },
+    {
+        "_id": {
+            "$oid": "aaaa00000000000000000002"
+        },
+        "email": "sp@jedlik.eu",
+        "email_verified": true,
+        "auto_login": true,
+        "name": "small producer",
+        "password": "$2a$10$hWQb.uXzCwfkWtmJ4EkoFuyKJoU5nnCzM9JrCY88jNBJD8cx8UVBm",
+        "roles": [
+            "sp"
+        ],
+        "mobile_number": "+36301234567",
+        "picture": "https://i.imgur.com/8q5S3dr.jpg"
+    },
+    {
+        "_id": {
+            "$oid": "aaaa00000000000000000001"
+        },
+        "email": "admin@jedlik.eu",
+        "email_verified": true,
+        "auto_login": true,
+        "name": "admin",
+        "password": "$2a$10$m2UGV7VvUsy6WCDQsgDFwOxMsmRznnsp.l0MB1AvP2fSE8ko5vjli",
+        "roles": [
+            "admin",
+            "user",
+            "sp"
+        ],
+        "mobile_number": "+36201234567",
+        "picture": "https://i.imgur.com/Vn9B6CK.jpg"
+    }
+]

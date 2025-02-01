@@ -1,0 +1,372 @@
+# LINK ./offer.controller.ts#getAllOffer
+# ANCHOR[id=getAllOffer]
+/offers:
+    get:
+        tags:
+            - Offers
+        summary: To query all offers
+        description: The endpoint asks the donations, returns with all the data of the table
+        responses:
+            "200":
+                description: OK.
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                $ref: "#/components/schemas/Offer"
+                headers:
+                    x-total-count:
+                        description: The number of offers
+                        schema:
+                            type: integer
+                            example: 2000
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+    # LINK ./offer.controller.ts#createOffer
+    # ANCHOR[id=createOffer]
+    post:
+        tags:
+            - Offers
+        summary: To create a new offer
+        description: Create a new offer.The offering must include the product ID, the offering user ID, the quantity of offering, the price, the start and end date of the offer, and a comment.The amount of offer must be greater than 0.If the finishing date of the offer is not null, the start date must be smaller than the finishing date.Objectids in foreign keys (user_id and product_id) must be existing values ​​in the Users and Products collections.
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Offer"
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Offer"
+                headers:
+                    x-total-count:
+                        description: The number of offers
+                        schema:
+                            type: number
+                            example: 2000
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+# LINK ./offer.controller.ts#getOfferById
+# ANCHOR[id=getOfferById]
+/offers/{id}:
+    get:
+        tags:
+            - Offers
+        summary: Inquiry of an offer
+        description: Inquiry of offerings based on primary key (ID)
+        parameters:
+            - name: id
+              in: path
+              description: The Objectid ID of the offer
+              schema:
+                  type: string
+                  example: "bbbb00000000000000000001"
+              required: true
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Offer"
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+    # LINK ./offer.controller.ts#modifyOffer
+    # ANCHOR[id=modifyOffer]
+    patch:
+        tags:
+            - Offers
+        summary: To change an offer
+        description: Change the offering designated with the primary key (ID).The model only allows you to modify the Offer_end, Quantity and Picture_url fields, and the endpoint sends an error message by trying to change the immutable field.
+        parameters:
+            - name: id
+              in: path
+              description: The Objectid ID of the offer
+              schema:
+                  type: string
+                  example: "bbbb00000000000000000999"
+              required: true
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Offer"
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Offer"
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+    # LINK ./offer.controller.ts#deleteOffer
+    # ANCHOR[id=deleteOffer]
+    delete:
+        tags:
+            - Offers
+        summary: To delete an offer
+        description: Delete the offering designated with the primary key (ID).The deletion will only take place if there is no reference to the offer in the related Orders collection.
+        parameters:
+            - name: id
+              in: path
+              description: Objectid ID of the offering to be deleted
+              schema:
+                  type: string
+                  example: "bbbb00000000000000000999"
+              required: true
+        responses:
+            "200":
+                description: OK
+                headers:
+                    x-total-count:
+                        description: Number of donations after deleting
+                        schema:
+                            type: number
+                            example: 200
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+
+/offers/myoffer/{id}:
+# LINK ./offer.controller.ts#getMyOffers
+# ANCHOR[id=getMyOffers]
+    get:
+        tags:
+            - Offers
+        summary: To query your own offerings
+        description: To query your own offerings
+        parameters:
+            - name: id
+              in: path
+              description: Any value, the user's ID is read from the Session Store for filtering
+              schema:
+                  type: string
+                  example: "get"
+              required: true
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Offer"
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+
+    # LINK ./offer.controller.ts#modifyMyOffer
+    # ANCHOR[id=modifyMyOffer]
+    patch:
+        tags:
+            - Offers
+        summary: Modifying your own offer
+        description: Modify your own donation with the primary key (ID).The model only allows you to modify the Offer_end, Quantity and Picture_url fields, and the endpoint sends an error message by trying to change the immutable field.
+        parameters:
+            - name: id
+              in: path
+              description: The Objectid ID of the offer
+              schema:
+                  type: string
+                  example: "bbbb00000000000000000999"
+              required: true
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Offer"
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Offer"
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+    delete:
+        tags:
+            - Offers
+        summary: Deleting your own offering
+        description: Deleting your own offerings with the primary key (ID).The deletion will only take place if there is no reference to the offer in the related Orders collection.
+        parameters:
+            - name: id
+              in: path
+              description: Objectid ID of the offering to be deleted
+              schema:
+                  type: string
+                  example: "bbbb00000000000000000999"
+              required: true
+        responses:
+            "200":
+                description: OK
+                headers:
+                    x-total-count:
+                        description: Number of donations after deleting
+                        schema:
+                            type: number
+                            example: 200
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+    
+   
+
+/offers/{offset}/{limit}/{sortingfield}/{filter}:
+    # LINK ./offer.controller.ts#getPaginatedOffers
+    # ANCHOR[id=getPaginatedOffers]
+
+    get:
+        tags:
+            - Offers
+        summary: Query all donations by filtration and paging
+        description: The endpoint questions all donations with a specified filter and paging.The filter condition applies to several text fields, including "or" logical connection.The arrangement is done according to the specified field, if the field name starts with a connection, then in descending order.The number of comprehensive compliance with the filter condition is returned by the endpoint in the "X-Total-COUNT" variable in the reply header.This is needed for correct paging on the client page.For unfamish operation, you need to write a star (*) character in the "filter" parameter.
+        parameters:
+            - name: offset
+              in: path
+              description: Offset
+              schema:
+                  type: number
+                  example: 0
+              required: true
+            - name: limit
+              in: path
+              description: Limit
+              schema:
+                  type: number
+                  example: 10
+              required: true
+            - name: sortingfield
+              in: path
+              description: sortingfield
+              schema:
+                  type: string
+                  example: "product.product_name"
+              required: true
+            - name: filter
+              in: path
+              description: filter
+              schema:
+                  type: string
+                  example: "gábor"
+              required: true
+        responses:
+            "200":
+                description: OK.
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                $ref: "#/components/schemas/Offer"
+                headers:
+                    x-total-count:
+                        description: The number of offers
+                        schema:
+                            type: integer
+                            example: 2000
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+/offers/active/{offset}/{limit}/{sortingfield}/{filter}:
+    # LINK ./offer.controller.ts#getPaginatedActiveOffers
+    # ANCHOR[id=getPaginatedActiveOffers]
+
+    get:
+        tags:
+            - Offers
+        summary: Query current donations by filtration and paging
+        description: The endpoint questions current (quantity> 0 and (off == null or off_end> now)) offers with a specified filter and paging.The filter condition applies to several text fields, including "or" logical connection.The arrangement is done according to the specified field, if the field name starts with a connection, then in descending order.The number of comprehensive compliance with the filter condition is returned by the endpoint in the "X-Total-COUNT" variable in the reply header.This is needed for correct paging on the client page.For unfamish operation, you need to write a star (*) character in the "filter" parameter.
+        parameters:
+            - name: offset
+              in: path
+              description: Offset
+              schema:
+                  type: number
+                  example: 0
+              required: true
+            - name: limit
+              in: path
+              description: Limit
+              schema:
+                  type: number
+                  example: 10
+              required: true
+            - name: sortingfield
+              in: path
+              description: sortingfield
+              schema:
+                  type: string
+                  example: "product.product_name"
+              required: true
+            - name: filter
+              in: path
+              description: filter
+              schema:
+                  type: string
+                  example: "gábor"
+              required: true
+        responses:
+            "200":
+                description: OK.
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                $ref: "#/components/schemas/Offer"
+                headers:
+                    x-total-count:
+                        description: The number of offers
+                        schema:
+                            type: integer
+                            example: 2000
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"

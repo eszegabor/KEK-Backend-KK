@@ -1,0 +1,14 @@
+# LINK ./LogIn.dto.ts
+components:
+    schemas:
+        LoginData:
+            type: object,
+            properties:
+                email:
+                    type: string
+                    description: "The user's email address"
+                    example: "admin@jedlik.eu"
+                password:
+                    type: string
+                    description: "The user's password"
+                    example: "admin"

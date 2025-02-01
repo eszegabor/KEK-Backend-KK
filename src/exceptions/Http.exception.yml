@@ -1,0 +1,13 @@
+components:
+    schemas:
+        Error:
+            type: object
+            properties:
+                status:
+                    type: number
+                    description: "The code of the error"
+                    example: 401
+                message:
+                    type: string
+                    description: "The error message (description of error)"
+                    example: "Wrong authentication token"

@@ -1,0 +1,225 @@
+# LINK ./category.controller.ts#getAllCategory
+# ANCHOR[id=getAllCategory]
+/categories:
+    get:
+        tags:
+            - Categories
+        summary: To query all categories
+        description: The endpoint asks the categories, returns with all the data of the collection
+        responses:
+            "200":
+                description: OK.
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                $ref: "#/components/schemas/Category"
+                headers:
+                    x-total-count:
+                        description: The number of categories
+                        schema:
+                            type: integer
+                            example: 2000
+            "4XX":
+                description: Hiba
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+    # LINK ./category.controller.ts#createCategory
+    # ANCHOR[id=createCategory]
+    post:
+        tags:
+            - Categories
+        summary: To create a new category
+        description: To create a new category.
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Category"
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Category"
+                headers:
+                    x-total-count:
+                        description: The number of categories
+                        schema:
+                            type: number
+                            example: 2000
+            "4XX":
+                description: Hiba
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+# LINK ./category.controller.ts#getCategoryById
+# ANCHOR[id=getCategoryById]
+/categories/{id}:
+    get:
+        tags:
+            - Categories
+        summary: To query a category
+        description: Category to query primary key (ID)
+        parameters:
+            - name: id
+              in: path
+              description: The Objectid ID of the category
+              schema:
+                  type: string
+                  example: "cccc00000000000000000001"
+              required: true
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Category"
+            "4XX":
+                description: Hiba
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+    # LINK ./category.controller.ts#modifyCategory
+    # ANCHOR[id=modifyCategory]
+    patch:
+        tags:
+            - Categories
+        summary: To change a category
+        description: Change the category selected with the primary key (ID)
+        parameters:
+            - name: id
+              in: path
+              description: The Objectid ID of the category
+              schema:
+                  type: string
+                  example: "cccc00000000000000000999"
+              required: true
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/Category"
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Category"
+            "4XX":
+                description: Hiba
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+    # LINK ./category.controller.ts#deleteCategory
+    # ANCHOR[id=deleteCategory]
+    delete:
+        tags:
+            - Categories
+        summary: Deleting a category
+        description: Delete the category selected with primary key (ID).<br>
+        parameters:
+            - name: id
+              in: path
+              description: Objectid ID of the category to be deleted
+              schema:
+                  type: string
+                  example: "cccc00000000000000000999"
+              required: true
+        responses:
+            "200":
+                description: OK
+                headers:
+                    x-total-count:
+                        description: Number of category after deletion
+                        schema:
+                            type: number
+                            example: 22
+            "4XX":
+                description: Hiba
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+/categories/main/all:
+# LINK ./category.controller.ts#getMainCategories
+# ANCHOR[id=getMainCategories]
+    get:
+        tags:
+            - Categories
+        summary: To query all the main categories
+        description: The endpoint asks the main categories and returns based on their name
+        responses:
+            "200":
+                description: OK.
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: string
+                            example: ["other", "spice", "fruit", "butterfly", "legumes", "seeds", "dairy products", "vegetable"]
+                headers:
+                    x-total-count:
+                        description: The number of categories
+                        schema:
+                            type: integer
+                            example: 2000
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"
+
+/categories/by/{main}:
+# LINK ./category.controller.ts#getCategoriesByMainCategory
+# ANCHOR[id=getCategoriesByMainCategory]
+    get:
+        tags:
+            - Categories
+        summary: Cycling categories based on the main category
+        description: Category to Category Returns based on the main category and their name is settled
+        parameters:
+            - name: main
+              in: path
+              description: The name of the main category
+              schema:
+                  type: string
+                  example: "fruit"
+              required: true
+        responses:
+            "200":
+                description: OK.
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                $ref: "#/components/schemas/Category"
+                headers:
+                    x-total-count:
+                        description: The number of subcategories
+                        schema:
+                            type: integer
+                            example: 5
+            "4XX":
+                description: Fault
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Error"

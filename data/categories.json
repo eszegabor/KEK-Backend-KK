@@ -1,0 +1,93 @@
+[
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000001"
+        },
+        "category_name": "gyökér- és gumószöldségek",
+        "main_category": "zöldségek"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000002"
+        },
+        "category_name": "leveles zöldségek és káposztafélék",
+        "main_category": "zöldségek"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000003"
+        },
+        "category_name": "hüvelyesek",
+        "main_category": "zöldségek"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000004"
+        },
+        "category_name": "hagymafélék",
+        "main_category": "zöldségek"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000005"
+        },
+        "category_name": "gombák",
+        "main_category": "zöldségek"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000006"
+        },
+        "category_name": "paradicsomok és paprikák",
+        "main_category": "zöldségek"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000007"
+        },
+        "category_name": "egyéb zöldségek",
+        "main_category": "zöldségek"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000008"
+        },
+        "category_name": "magvas gyümölcsök",
+        "main_category": "gyümölcsök"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000009"
+        },
+        "category_name": "csonthéjas gyümölcsök",
+        "main_category": "gyümölcsök"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000010"
+        },
+        "category_name": "bogyós gyümölcsök",
+        "main_category": "gyümölcsök"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000011"
+        },
+        "category_name": "déli gyümöcsök",
+        "main_category": "gyümölcsök"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000012"
+        },
+        "category_name": "héjas gyümölcsök",
+        "main_category": "gyümölcsök"
+    },
+    {
+        "_id": {
+            "$oid": "cccc00000000000000000013"
+        },
+        "category_name": "egyéb gyümölcsök",
+        "main_category": "gyümölcsök"
+    }
+]
