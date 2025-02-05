@@ -1,12 +1,12 @@
 {
     "name": "kek-backend",
     "version": "1.0.0",
-    "description": "Backend for the kek project",
+    "description": "Backend for the KEK project",
     "main": "src/server.ts",
     "repository": {
         "private": false,
         "type": "git",
-        "url": "https://github.com/nitslaszlo/kek"
+        "url": "https://github.com/eszegabor/KEK-Backend-KK"
     },
     "scripts": {
         "start": "node ./dist/server.js",
